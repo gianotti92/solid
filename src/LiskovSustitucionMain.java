@@ -10,15 +10,15 @@ public class LiskovSustitucionMain {
 
 
 
-    public static abstract class Ave{
+    public static interface Ave{
 
-        public abstract void volar();
-        public abstract void cantar();
+        void volar();
+        void cantar();
 
     }
 
 
-    public class Colibri extends Ave{
+    public class Colibri implements Ave{
 
         @Override
         public void volar() {
@@ -27,7 +27,7 @@ public class LiskovSustitucionMain {
 
         @Override
         public void cantar() {
-            System.out.println("BLABLAAB colibri");
+            System.out.println("Colibri colibri");
         }
     }
 

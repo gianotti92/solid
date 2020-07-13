@@ -12,14 +12,11 @@ public class SingleResponsabilityMain {
         persona.guardarPersonaEnDb(); //TODO: que no se esta cumpliendo? como lo solucionaríamos?
     }
 
+    public static class Persona {
 
-
-
-
-
-    public static class Persona{
         String nombre;
         String apellido;
+        Boolean esSQL;
 
         public String getNombre() {
             return nombre;
@@ -37,8 +34,20 @@ public class SingleResponsabilityMain {
             this.apellido = apellido;
         }
 
-        public void guardarPersonaEnDb(){
-            System.out.println(String.format("guardando Persona : nombre: %s, apellido: %s", nombre, apellido));
+        public Boolean getEsSQL() {
+            return esSQL;
+        }
+
+        public void setEsSQL(Boolean esSQL) {
+            this.esSQL = esSQL;
+        }
+
+        public void guardarPersonaEnDb() {
+            if (esSQL) {
+                System.out.println(String.format("guardando Persona en base relacional : nombre: %s, apellido: %s", nombre, apellido));
+            } else {
+                System.out.println(String.format("guardando Persona en otro tipo de repositorio: nombre: %s, apellido: %s", nombre, apellido));
+            }
         }
     }
 }

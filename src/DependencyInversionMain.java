@@ -16,13 +16,20 @@ public class DependencyInversionMain {
         Motor motor;
 
         public Auto(){
-            motor = new Motor(); //TODO: que vemos aca? acoplamiento, no se cumple open/close
+            motor = new Motor(); //TODO: que vemos aca? acoplamiento entre auto y motor.
+        }
+
+        public void acelerar(){
+            this.motor.acelerar();
         }
 
     }
 
     public static class Motor{
 
+        private void acelerar() {
+            System.out.println("motor acelerando");
+        }
     }
 
     //COMO LO SOLUCIONARIAMOS?????

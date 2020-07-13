@@ -7,26 +7,49 @@ public class OpenCloseMain {
 
     }
 
-    public static class Documento{
-        private static String contenido;
-        private static Impresora impresora;
+    public static class PersonaRepository{
 
-        public static void agregarContenido(String datos){ //aca vemos que tambien hay acoplamiento.
-            contenido = datos;
-        }
+        public void guardar(Persona persona){
 
-        public static void imprimir(){
-            impresora = new Impresora();
-            impresora.imprimir(contenido);
+            if(persona.getEsMysql()){
+                System.out.println("Guardando en Mysq = nombre:" + persona.getNombre());
+            }else{
+                System.out.println("Guardando en H2 = nombre:" + persona.getNombre());
+            }
+            //TODO: y sigo agregando distintas formas de guardar.. (estoy modificando la clase Persona Repository)
         }
     }
 
 
-    public static class Impresora{
-        public static void imprimir(String contenido){
-            System.out.println("Impresora imprmiendo" + contenido);
+    public static class Persona{
+
+        String nombre;
+        String apellido;
+        Boolean esMysql;
+
+        public String getNombre() {
+            return nombre;
         }
 
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getApellido() {
+            return apellido;
+        }
+
+        public void setApellido(String apellido) {
+            this.apellido = apellido;
+        }
+
+        private Boolean getEsMysql() {
+            return esMysql;
+        }
+
+        private void setEsMysql(Boolean esMysql) {
+            this.esMysql = esMysql;
+        }
     }
 
 
